@@ -2,9 +2,17 @@ package com.learning.entities;
 
 import java.util.List;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import com.learning.examples.IsValidHobby;
+
 public class Student {
 	private String name;
+	@Pattern(regexp="[^0-9]*")
+	@IsValidHobby
 	private String hobby;
+	@Size(min=10, max=10)
 	private String mobile;
 	private String date_of_birth;
 	private List<String> skill;

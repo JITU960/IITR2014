@@ -1,6 +1,8 @@
 package com.learning.examples;
  
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +18,7 @@ import com.learning.entities.Student;
 public class ModelAttributeExample {
 	@InitBinder
 	public void initBinder(WebDataBinder wdb) {
-		wdb.setDisallowedFields(new String[] {"mobile"});
+		//wdb.setDisallowedFields(new String[] {"mobile"});
 	}
 	
 	@RequestMapping(value="admission-form",  method=RequestMethod.GET)
@@ -31,7 +33,7 @@ public class ModelAttributeExample {
 	}
 	//@RequestParam("name") String name, @RequestParam("hobby") String hobby
 	@RequestMapping(value="admission-form", method=RequestMethod.POST)
-	protected ModelAndView postAdmissionForm(@ModelAttribute("student") Student std, BindingResult br) {
+	protected ModelAndView postAdmissionForm(@Valid @ModelAttribute("student") Student std, BindingResult br) {
 		if(br.hasErrors()) {
 			ModelAndView mNv = new ModelAndView("ModelAttribute/AdmissionForm");
 			return mNv;
