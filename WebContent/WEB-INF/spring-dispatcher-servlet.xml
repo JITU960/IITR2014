@@ -11,6 +11,9 @@
     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<mvc:annotation-driven/>
+	<mvc:interceptors>
+		<bean class="com.learning.examples.DayOfWeekBasedInterceptor"></bean>
+	</mvc:interceptors>
 	<context:component-scan base-package="com.learning.examples"/>
     <bean id="viewResolver"
     	class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
